@@ -1,0 +1,43 @@
+from django.db import models
+
+
+class CustomUser(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=150, null=True, blank=True)
+    last_name = models.CharField(max_length=150, null=True, blank=True)
+    phone = models.CharField(max_length=11)
+    is_active = models.BooleanField(default=True)
+    last_login = models.DateTimeField(auto_now=True)
+    email = models.EmailField(max_length=255, unique=True)
+    lang = models.CharField(max_length=3, null=True, blank=True)
+    external_id = models.CharField(max_length=150, null=True, blank=True)
+    role_id = models.IntegerField(null=True, blank=True)
+    auth_type = models.IntegerField(null=True, blank=True)
+    labels = models.JSONField(null=True, blank=True)
+
+
+class Course(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    owner_id = models.IntegerField()
+    content_type = models.PositiveSmallIntegerField()
+    owner_name = models.CharField(max_length=255)
+    thumb_url = models.URLField(null=True, blank=True)
+    cover_url = models.URLField(null=True, blank=True)
+    description = models.TextField()
+    last_activity = models.DateTimeField(auto_now=True)
+    total_score = models.IntegerField()
+    total_tasks = models.IntegerField()
+    is_netology = models.BooleanField()
+    bg_url = models.URLField(null=True, blank=True)
+    video_url = models.URLField(null=True, blank=True)
+    demo = models.BooleanField()
+    unchangeable = models.BooleanField()
+    include_weekly_report = models.BooleanField()
+    custom_author_names = models.CharField(max_length=255)
+    custom_contents_link = models.URLField(null=True, blank=True)
+    hide_viewer_navigation = models.BooleanField()
+    duration = models.TimeField(null=True, blank=True)
+    account_id = models.IntegerField()
